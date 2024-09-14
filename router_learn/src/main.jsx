@@ -8,7 +8,15 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import { Home, About,Contact } from "./components";
+import {
+  Home,
+  About,
+  Contact,
+  User,
+  Github,
+  GithubLoader,
+  githubLoaderInfo,
+} from "./components";
 
 //One Way
 // const router = createBrowserRouter([
@@ -31,19 +39,22 @@ import { Home, About,Contact } from "./components";
 //     ]
 //   },
 // ])
-//
+
 
 
 //Second Way
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<App />}>
-      <Route path='' element={<Home />} />
-      <Route path='about' element={<About/>} />
-      <Route path='contact' element={<Contact/>} />
+    <Route path="/" element={<App />}>
+      <Route path="" element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route path="contact" element={<Contact />} />
+      <Route path="user/:id" element={<User />} />
+      {/* <Route path='github' element={<Github/>} /> */}
+      <Route loader={githubLoaderInfo} path="github" element={<GithubLoader />} />
     </Route>
   )
-)
+);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
